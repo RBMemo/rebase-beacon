@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  app:
+    platform: linux/amd64
+    build: .
+    image: ${ECR_REGISTRY}/rb-rebase-beacon:prod
+    command: sh -c "npm install --only=prod && npm start"
+    working_dir: /app
+    ports:
+      - 80:80
+    environment:
+      PORT: 80
+      NODE_ENV: production
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: us-west-2
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1Gb
