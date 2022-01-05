@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon app.js",
     "start": "node app.js",
-    "ddev": "docker compose -f ./compose-local.yml up",
+    "ddev": "scripts/run-dev.sh",
     "dlogin": "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 016619982582.dkr.ecr.us-west-2.amazonaws.com",
     "template": "docker --context nooki-ecs compose -p rb-rebase-beacon convert",
     "deploy-prod": "scripts/deploy-prod.sh"
