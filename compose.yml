@@ -1,4 +1,8 @@
 version: "3.7"
+secrets:
+  aws_creds:
+    file: $HOME/.aws/credentials
+
 services:
   app:
     platform: linux/amd64
@@ -11,6 +15,13 @@ services:
     environment:
       PORT: 80
       NODE_ENV: production
+      SQS_QUEUE_URL: https://sqs.us-west-2.amazonaws.com/016619982582/rebase_beacon_queue
+    secrets:
+    - source: aws_creds
+      target: /root/.aws/credentials
+      uid: '1000'
+      gid: '1000'
+      mode: 0700
     logging:
       driver: awslogs
       options:
