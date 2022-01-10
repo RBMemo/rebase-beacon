@@ -23,6 +23,7 @@
   "homepage": "https://github.com/RBMemo/rebase-beacon#readme",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.45.0",
+    "@splitbase-dev/contracts": "github:RBMemo/contracts",
     "express": "^4.17.2",
     "express-winston": "^4.2.0",
     "web3": "^1.6.1",
